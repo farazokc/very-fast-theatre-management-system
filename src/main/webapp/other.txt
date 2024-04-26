@@ -1,0 +1,609 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!-- <head> -->
+<!-- <meta charset="ISO-8859-1"> -->
+<!-- <title>Admin Home</title> -->
+<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<!-- <script type="text/javascript" href="js/jquery.js"></script> -->
+<!-- <script type="text/javascript" href="js/bootstrap.bundle.js"></script> -->
+<!-- </head> -->
+<!-- <body> -->
+	<%--
+	ArrayList<Schedule> list = ScheduleDao.getSchedule(); //jitne schedule exist karte wo agaye
+	ArrayList<Movie> movieList = MovieDao.getMovieList();
+	ArrayList<TypeDetails> typeList = TypeDetailsDao.getTypeDetails();
+
+	ArrayList<Movie> MovieList = new ArrayList<Movie>();
+	ArrayList<Cinema> CinemaList = new ArrayList<Cinema>();
+	ArrayList<LocalTime> TimeList = new ArrayList<LocalTime>();
+
+	Account a1 = AccountDao.getAdminName();
+
+	boolean found;
+
+	////Movies
+	for (int i = 0; i < list.size(); i++) {
+		found = false;
+		for (int j = 0; j < MovieList.size(); j++) {
+			if (list.get(i).getMovieID() == MovieList.get(j).getMovieID())
+		found = true;
+		}
+		if (!found)
+			MovieList.add(MovieDao.getMovie(list.get(i).getMovieID()));
+	}
+
+	////Cinemas
+	for (int i = 0; i < list.size(); i++) {
+		found = false;
+		for (int j = 0; j < CinemaList.size(); j++) {
+			if (list.get(i).getCinemaID() == CinemaList.get(j).getCinemaID())
+		found = true;
+		}
+		if (!found)
+			CinemaList.add(CinemaDao.getCinema(list.get(i).getCinemaID()));
+	}
+
+	////Times
+	for (int i = 0; i < list.size(); i++) {
+		found = false;
+		for (int j = 0; j < TimeList.size(); j++) {
+			if (list.get(i).getTime().equals(TimeList.get(j)))
+		found = true;
+		}
+		if (!found)
+			TimeList.add(list.get(i).getTime());
+	}
+	--%>
+<!-- 	<a href="index.jsp"><button>Home Page</button></a> -->
+<!-- 	<br> -->
+
+<!-- 	<h1>Admin Mode</h1> -->
+<!-- 	<h2> -->
+<!-- 		Welcome: Mr. -->
+		<%--
+	out.println(a1);
+	--%>
+<!-- 	</h2> -->
+
+<!-- 	<h2>Schedule:</h2> -->
+<!-- 	<button onclick='changeVisibility("newSchedule")'>Add New -->
+<!-- 		Schedule</button> -->
+<!-- 	<button onclick='changeVisibility("editSchedule")'>Edit -->
+<!-- 		Current Schedule</button> -->
+
+<!-- 	<h2>Movie:</h2> -->
+<!-- 	<button onclick='changeVisibility("newMovie")'>Add New Movie</button> -->
+<!-- 	<button onclick='changeVisibility("editMovie")'>Edit Current -->
+<!-- 		Movies</button> -->
+
+<!-- 	<h2>Screen Type:</h2> -->
+<!-- 	<button onclick='changeVisibility("newType")'>Add New Type</button> -->
+<!-- 	<button onclick='changeVisibility("editType")'>Edit Current -->
+<!-- 		Types</button> -->
+
+<!-- 	<br> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
+<%-- 	<h3>New Schedule</h3>
+	<div class="container">
+		<form class="form-vertical" name="newSchedule"
+			action="newScheduleController" method="get" display="none">
+			<input type="hidden" name="formName" value="newSchedule">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Schedule ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" placeholder="Schedule ID"
+						name="ScheduleID">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Cinema ID:</label>
+				<div class="col-sm-2">
+					<select class="form-select" name="CinemaID">
+						<option value="*" selected>All Cinema IDs</option>
+						<%
+						for (Cinema i : CinemaList) {
+						%>
+						<option value="<%=i.getCinemaID()%>"><%=i.getCinemaName()%></option>
+						<%
+						}
+						%>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie ID:</label>
+				<div class="col-sm-2">
+					<select class="form-select" name="MovieID">
+						<option value="*">All Movie IDs</option>
+						<%
+						for (Movie i : MovieList) {
+						%>
+						<option value="<%=i.getMovieID()%>"><%=i.getMovieName()%></option>
+						<%
+						}
+						%>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Time:</label>
+				<div class="col-sm-2">
+					<select class="form-select" name="Time">
+						<option value="*">All Times</option>
+						<%
+						for (LocalTime i : TimeList) {
+						%>
+						<option value="<%=i%>"><%=i%></option>
+						<%
+						}
+						%>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Date:</label>
+				<div class="col-sm-2">
+					<input type="date" name="Date">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+
+	<h3>Edit Schedule</h3>
+	<div class="container">
+		<form class="form-horizontal" name="editSchedule"
+			action="editScheduleController" method="get" display="none">
+			<input type="hidden" name="formName" value="editSchedule">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Old Schedule ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text"
+						placeholder=" Old Schedule ID" name="oldSID">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Schedule ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" placeholder="Schedule ID"
+						name="ScheduleID">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Cinema ID:</label>
+				<div class="col-sm-2">
+					<select class="form-select" name="CinemaID">
+						<option value="*" selected>All Cinema IDs</option>
+						<%
+						for (Cinema i : CinemaList) {
+						%>
+						<option value="<%=i.getCinemaID()%>"><%=i.getCinemaName()%></option>
+						<%
+						}
+						%>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie ID:</label>
+				<div class="col-sm-2">
+					<select class="form-select" name="MovieID">
+						<option value="*">All Movie IDs</option>
+						<%
+						for (Movie i : MovieList) {
+						%>
+						<option value="<%=i.getMovieID()%>"><%=i.getMovieName()%></option>
+						<%
+						}
+						%>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Time:</label>
+				<div class="col-sm-2">
+					<select class="form-select" name="Time">
+						<option value="*">All Times</option>
+						<%
+						for (LocalTime i : TimeList) {
+						%>
+						<option value="<%=i%>"><%=i%></option>
+						<%
+						}
+						%>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Date:</label>
+				<div class="col-sm-2">
+					<input type="date" name="Date">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+
+	<h3>New Movie</h3>
+	<div class="container">
+		<form class="form-horizontal" name="newMovie"
+			action="newMovieController" method="get" display="none">
+			<input type="hidden" name="formName" value="newMovie">
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="number" placeholder="Movie ID"
+						name="MovieID">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Name:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Genre"
+						placeholder="Enter Movie Name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Genre:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Genre"
+						placeholder="Enter Movie Genre">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Trailer Link:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Link"
+						placeholder="Enter Movie Trailer Link">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Duration:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="number" name="Duration"
+						placeholder="Enter Movie Duration" step="any">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Main Character:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="MainChar"
+						placeholder="Enter Movie Main Character">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Description:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Description"
+						placeholder="Enter Movie Description">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+
+	<h3>Edit Movie</h3>
+	<div class="container">
+		<form class="form-horizontal" name="editMovie"
+			action="editMovieController" method="get" display="none">
+			<input type="hidden" name="formName" value="editMovie">
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Old Movie ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="number"
+						placeholder="Old Movie ID" name="old MID">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="number" placeholder="Movie ID"
+						name="MovieID">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Name:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Genre"
+						placeholder="Enter Movie Name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Genre:</label>
+				<div class="col-sm-2">
+					<input class="form-control" class="form-control" type="text"
+						name="Genre" placeholder="Enter Movie Genre">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Trailer Link:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Link"
+						placeholder="Enter Movie Trailer Link">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Duration:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="number" name="Duration"
+						placeholder="Enter Movie Duration" step="any">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Main Character:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="MainChar"
+						placeholder="Enter Movie Main Character">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Movie Description:</label>
+				<div class="col-sm-2">
+					<input class="form-control" type="text" name="Description"
+						placeholder="Enter Movie Description">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+
+	<h3>Add Type</h3>
+	<div class="container">
+		<form class="form-horizontal" name="newType"
+			action="newTypeController" method="get" display="none">
+			<input type="hidden" name="formName" value="newType">
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Type ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="number" name="TypeID" placeholder="Enter Type ID">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Type Name:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="text" name="Type" placeholder="Enter Type Name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Price:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="number" name="Price" placeholder="Enter Price">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+
+	<h3>Edit Type</h3>
+	<div class="container">
+		<form class="form-horizontal" name="editType"
+			action="editTypeController" method="get" display="none">
+			<input type="hidden" name="formName" value="editType">
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Old Type ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="number" name="old TID" placeholder="Enter Old Type ID">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Type ID:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="number" name="TypeID" placeholder="Enter Type ID">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Type Name:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="text" name="Type" placeholder="Enter Type Name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Price:</label>
+				<div class="col-sm-2">
+					<input class="form-control"  type="number" name="Price" placeholder="Enter Price">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr> --%>
+
+
+
+<!-- ************************************************************************************************************************ -->
+
+	<%-- <hr>
+	<form name="newSchedule" action="newScheduleController" method="get"
+		display="none">
+		<label>ADD NEW SCHEDULE</label> <br> <br> <input
+			type="hidden" name="formName" value="newSchedule"> <input
+			type="number" name="ScheduleID" placeholder="Enter Schedule ID">
+		<select name="CinemaID">
+			<option value="*">All Cinema ID</option>
+			<%
+			for (Cinema i : CinemaList) {
+			%>
+			<option value="<%=i.getCinemaID()%>"><%=i.getCinemaName()%></option>
+			<%
+			}
+			%>
+		</select> <select name="MovieID">
+			<option value="*">All Movie ID</option>
+			<%
+			for (Movie i : MovieList) {
+			%>
+			<option value="<%=i.getMovieID()%>"><%=i.getMovieName()%></option>
+			<%
+			}
+			%>
+		</select> <select name="Time">
+			<option value="*">All Times</option>
+			<%
+			for (LocalTime i : TimeList) {
+			%>
+			<option value="<%=i%>"><%=i%></option>
+			<%
+			}
+			%>
+		</select> <input type="date" name="Date"> <input type="submit">
+		<br> <br>
+	</form>
+
+	<form name="editSchedule" action="editScheduleController"
+		display="none">
+		<label>EDIT A SCHEDULE</label> <br> <br> <input
+			type="hidden" name="formName" value="editSchedule"> <select
+			name="oldSID">
+			<option value="*">Old Schedule ID</option>
+			<%
+			for (Schedule i : list) {
+			%>
+			<option value="<%=i.getScheduleID()%>"><%=i.getScheduleID()%></option>
+			<%
+			}
+			%>
+		</select> <input type="number" name="ScheduleID"
+			placeholder="Enter Schedule ID"> <select name="CinemaID">
+			<option value="*">All Cinema ID</option>
+			<%
+			for (Cinema i : CinemaList) {
+			%>
+			<option value="<%=i.getCinemaID()%>"><%=i.getCinemaName()%></option>
+			<%
+			}
+			%>
+		</select> <select name="MovieID">
+			<option value="*">All Movie ID</option>
+			<%
+			for (Movie i : MovieList) {
+			%>
+			<option value="<%=i.getMovieID()%>"><%=i.getMovieName()%></option>
+			<%
+			}
+			%>
+		</select> <select name="Time">
+			<option value="*">All Times</option>
+			<%
+			for (LocalTime i : TimeList) {
+			%>
+			<option value="<%=i%>"><%=i%></option>
+			<%
+			}
+			%>
+		</select> <input type="date" name="Date"> <input type="submit">
+		<br> <br>
+	</form>
+
+	<form name="newMovie" action="newMovieController" display="none">
+		<label>ADD NEW MOVIE</label> <br> <br> <input type="hidden"
+			name="formName" value="newMovie"> <input type="number"
+			name="MovieID" placeholder="Enter Movie ID"> <input
+			type="text" name="MovieName" placeholder="Enter Movie Name">
+		<input type="text" name="Genre" placeholder="Enter Movie Genre">
+		<input type="text" name="Link" placeholder="Enter Movie Trailer Link">
+		<input type="text" name="Genre" placeholder="Enter Movie Genre">
+		<input type="number" name="Duration"
+			placeholder="Enter Movie Duration" step="any"> <input
+			type="text" name="MainChar" placeholder="Enter Movie Main Character">
+		<input type="text" name="Description"
+			placeholder="Enter Movie Description"> <br> <br>
+	</form>
+
+	<form name="editMovie" action="editMovieController" display="none">
+		<label>EDIT A MOVIE</label> <br> <br> <select name="OldMID">
+			<option value="*">Old Movie ID</option>
+			<%
+			for (Movie i : MovieList) {
+			%>
+			<option value="<%=i.getMovieID()%>"><%=i.getMovieID()%></option>
+			<%
+			}
+			%>
+		</select> <input type="number" name="MovieID" placeholder="Enter New Movie ID">
+		<input type="text" name="MovieName" placeholder="Enter Movie Name">
+		<input type="text" name="Genre" placeholder="Enter Movie Genre">
+		<input type="text" name="Link" placeholder="Enter Movie Trailer Link">
+		<input type="text" name="Genre" placeholder="Enter Movie Genre">
+		<input type="number" name="Duration"
+			placeholder="Enter Movie Duration" step="any"> <input
+			type="text" name="MainChar" placeholder="Enter Movie Main Character">
+		<input type="text" name="Description"
+			placeholder="Enter Movie Description"> <br> <br>
+	</form> --%>
+
+<!-- 	<form name="newType" action="newTypeController" display="none"> -->
+<!-- 		<label>ADD NEW TYPE</label> <br> <br> <input type="hidden" -->
+<!-- 			name="formName" value="newType"> <input type="number" -->
+<!-- 			name="TypeID" placeholder="Enter Type ID"> <input type="text" -->
+<!-- 			name="Type" placeholder="Enter Type Name"> <input -->
+<!-- 			type="number" name="Price" placeholder="Enter Price"> <br> -->
+<!-- 		<br> -->
+<!-- 	</form>  -->
+
+<!-- 	<form name="editType" action="editTypeController" display="none">  -->
+
+<!-- 		<label>EDIT A TYPE</label> <br> <br> <input type="hidden" -->
+<!-- 			name="formName" value="newType"> <select name="OldTID"> -->
+<!-- 			<option value="*">Old Type ID</option> -->
+<%-- 			<% --%>
+<!-- 	 			for (TypeDetails i : typeList) { -->
+<%-- 			%> --%>
+<%-- 			<option value="<%=i.getTypeID()%>"><%=i.getTypeID()%></option> --%>
+<%-- 			<% --%>
+<!--  			} -->
+<%-- 			%> --%>
+<!-- 		</select> <input type="number" name="TypeID" placeholder="Enter Type ID"> -->
+<!-- 		<input type="text" name="Type" placeholder="Enter Type Name"> -->
+<!-- 		<input type="number" name="Price" placeholder="Enter Price"> <br> -->
+<!-- 		<br> -->
+<!-- 	</form> -->
+
+
+<!-- 	<script> -->
+<!-- // 		function hideForms() { -->
+<!-- // 			var elements = document.getElementsByTagName('form'); -->
+
+<!-- // 			for ( const elem in elements) { -->
+<!-- // 				elements[elem].style.display = "none"; -->
+<!-- // 			} -->
+<!-- // 		} -->
+
+<!-- // 		hideForms(); -->
+
+<!-- // 		function changeVisibility(elementName) { -->
+<!-- // 			var element = document.getElementsByName(elementName); -->
+<!-- // 			console.log(element); -->
+<!-- // 			if (element[0].style.display === "none") { -->
+<!-- // 				element[0].style.display = 'block'; -->
+<!-- // 			} else { -->
+<!-- // 				element[0].style.display = 'none'; -->
+<!-- // 			} -->
+<!-- // 		} -->
+<!-- 	</script> -->
+<!-- </body> -->
+<!-- </html> -->
