@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `veryfast_tms` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `veryfast_tms`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: veryfast_tms
@@ -39,7 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES ('abdul.hadi@vftms.com','passwordNice','Abdul Hadi','1998-11-03','1','Manager'),('asim.trading21@yahoo.com','g','g','2023-01-17','1234-6789010','Customer'),('bigboyadmin@vftms.com','mushkilTareen','Kamran Akmal','1995-12-12','1','CEO'),('ilikemovies@vftms.com','simplePass','Rana Sanaullah','2000-09-05','1','Manager'),('k201639@nu.edu.pk','123456','aman','2022-11-05','0301-1234566','Pending'),('meriiddaldo@vftms.com','merapassword','mera nam','2011-06-09','0310-1234566','Customer'),('misserum@nu.edu.pk','password','Miss Erum','1999-01-06','0300-5390000','Customer'),('moviewatcheruwu@vftms.com','justintime','Justin Yaegar','1999-01-06','1','Customer');
+INSERT INTO `account` VALUES ('abdul.hadi@vftms.com','passwordNice','Abdul Hadi','1998-11-03','1','Manager'),('bigboyadmin@vftms.com','mushkilTareen','Kamran Akmal','1995-12-12','1','CEO'),('ilikemovies@vftms.com','simplePass','Rana Sanaullah','2000-09-05','1','Manager'),('meriiddaldo@vftms.com','merapassword','mera nam','2011-06-09','0310-1234566','Customer'),('moviewatcheruwu@vftms.com','justintime','Justin Yaegar','1999-01-06','1','Customer');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +139,7 @@ CREATE TABLE `history` (
   `RecordID` varchar(20) NOT NULL,
   `ScheduleID` int NOT NULL,
   `SeatID` int NOT NULL,
-  `Email` varchar(30) DEFAULT NULL,
+  `Email` varchar(30) NOT NULL,
   `GuestID` int DEFAULT NULL,
   `Price` int DEFAULT NULL,
   PRIMARY KEY (`RecordID`),
@@ -158,7 +160,7 @@ CREATE TABLE `history` (
 
 LOCK TABLES `history` WRITE;
 /*!40000 ALTER TABLE `history` DISABLE KEYS */;
-INSERT INTO `history` VALUES ('E-Ticket13',1,3,NULL,3,1200),('E-Ticket14',1,4,NULL,3,1200),('E-Ticket213',2,13,'moviewatcheruwu@vftms.com',NULL,800),('E-Ticket215',2,15,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket217',2,17,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket3100',3,100,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket3101',3,101,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket3103',3,103,NULL,3,1200),('E-Ticket3104',3,104,NULL,3,1200),('E-Ticket5200',5,200,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket5201',5,201,'bigboyadmin@vftms.com',NULL,1200),('E-Ticket5202',5,202,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket5204',5,204,'moviewatcheruwu@vftms.com',NULL,800),('E-Ticket5205',5,205,'moviewatcheruwu@vftms.com',NULL,800),('E-Ticket5208',5,208,NULL,3,1200),('E-Ticket5211',5,211,NULL,3,1200),('E-Ticket5214',5,214,'moviewatcheruwu@vftms.com',NULL,800),('E-Ticket5215',5,215,'moviewatcheruwu@vftms.com',NULL,800),('E-Ticket8309',8,309,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket8310',8,310,NULL,1,1200),('E-Ticket8312',8,312,NULL,3,1200),('E-Ticket8313',8,313,NULL,3,1200),('E-Ticket9404',9,404,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket9406',9,406,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket9407',9,407,'meriiddaldo@vftms.com',NULL,1200),('E-Ticket9412',9,412,NULL,2,1200),('E-Ticket9415',9,415,NULL,2,1200);
+INSERT INTO `history` VALUES ('E-Ticket5200',5,200,'moviewatcheruwu@vftms.com',NULL,1200),('E-Ticket7305',7,305,'moviewatcheruwu@vftms.com',NULL,800),('E-Ticket9408',9,408,'meriiddaldo@vftms.com',NULL,800);
 /*!40000 ALTER TABLE `history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +205,7 @@ CREATE TABLE `movie` (
 
 LOCK TABLES `movie` WRITE;
 /*!40000 ALTER TABLE `movie` DISABLE KEYS */;
-INSERT INTO `movie` VALUES (1,'The Legend of Maula Jatt','Drama','https://www.youtube.com/embed/pEWqOAcYgpQ',2.0,'Hamza Abbasi','A fierce prizefighter with a tortured past seeks vengeance against the most feared warrior in the Kingdom of Punjab.'),(2,'Black Panther: Wakanda Forever','Action','https://www.youtube.com/embed/_Z3QKkl1WyM',2.5,'Letitia Wright','A sequel that will continue to explore the world of Wakanda and all the characters introduced in the 2018 film.'),(3,'Zarrar','Adventure','https://www.youtube.com/embed/xbZcsP_wlUU',2.0,'Shaan Shahid','A man on a mission to end corruption and solve this seemingly endless cycle of threats to the country.'),(4,'Fast Five','Racing','https://www.youtube.com/embed/vcn2GOuZCKI',2.5,'Vin Diesel','Vin Diesel and Paul Walker lead a reunion of returning all-stars from every chapter of the explosive franchise built on speed in Fast Five.');
+INSERT INTO `movie` VALUES (1,'The Legend of Maula Jatt','Drama','https://www.youtube.com/embed/pEWqOAcYgpQ',2.0,'Hamza Abbasi','A fierce prizefighter with a tortured past seeks vengeance against the most feared warrior in the Kingdom of Punjab.'),(2,'Black Panther: Wakanda Forever','Action','https://www.youtube.com/embed/_Z3QKkl1WyM',2.5,'Letitia Wright','A sequel that will continue to explore the world of Wakanda and all the characters introduced in the 2018 film.'),(3,'Zarrar','Adventure','https://www.youtube.com/embed/xbZcsP_wlUU',2.0,'Shaan Shahid','A man on a mission to end corruption and solve this seemingly endless cycle of threats to the country.');
 /*!40000 ALTER TABLE `movie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,9 +244,30 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
-INSERT INTO `reservation` (`ScheduleID`, `SeatID`, `Email`, `GuestID`) VALUES ,201,100,'misserum@nu.edu.pk',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),201,117,'misserum@nu.edu.pk',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),201,117,'misserum@nu.edu.pk',NULL),300,15,'moviewatcheruwu@vftms.com',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),201,117,'misserum@nu.edu.pk',NULL),300,15,'moviewatcheruwu@vftms.com',NULL),300,16,'moviewatcheruwu@vftms.com',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),201,117,'misserum@nu.edu.pk',NULL),300,15,'moviewatcheruwu@vftms.com',NULL),300,16,'moviewatcheruwu@vftms.com',NULL),300,17,'moviewatcheruwu@vftms.com',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),201,117,'misserum@nu.edu.pk',NULL),300,15,'moviewatcheruwu@vftms.com',NULL),300,16,'moviewatcheruwu@vftms.com',NULL),300,17,'moviewatcheruwu@vftms.com',NULL),300,28,'moviewatcheruwu@vftms.com',NULL),,201,100,'misserum@nu.edu.pk',NULL),201,101,'misserum@nu.edu.pk',NULL),201,102,'moviewatcheruwu@vftms.com',NULL),201,103,'moviewatcheruwu@vftms.com',NULL),201,116,'misserum@nu.edu.pk',NULL),201,117,'misserum@nu.edu.pk',NULL),300,15,'moviewatcheruwu@vftms.com',NULL),300,16,'moviewatcheruwu@vftms.com',NULL),300,17,'moviewatcheruwu@vftms.com',NULL),300,28,'moviewatcheruwu@vftms.com',NULL),300,29,'moviewatcheruwu@vftms.com',NULL);
+INSERT INTO `reservation` (`ScheduleID`, `SeatID`, `Email`, `GuestID`) VALUES ,1,3,NULL,3),,1,3,NULL,3),1,4,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),8,309,'moviewatcheruwu@vftms.com',NULL),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),8,309,'moviewatcheruwu@vftms.com',NULL),8,310,NULL,1),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),8,309,'moviewatcheruwu@vftms.com',NULL),8,310,NULL,1),8,312,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),8,309,'moviewatcheruwu@vftms.com',NULL),8,310,NULL,1),8,312,NULL,3),8,313,NULL,3),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),8,309,'moviewatcheruwu@vftms.com',NULL),8,310,NULL,1),8,312,NULL,3),8,313,NULL,3),9,407,'meriiddaldo@vftms.com',NULL),,1,3,NULL,3),1,4,NULL,3),3,103,NULL,3),3,104,NULL,3),5,200,'moviewatcheruwu@vftms.com',NULL),5,201,'bigboyadmin@vftms.com',NULL),5,208,NULL,3),5,211,NULL,3),8,309,'moviewatcheruwu@vftms.com',NULL),8,310,NULL,1),8,312,NULL,3),8,313,NULL,3),9,407,'meriiddaldo@vftms.com',NULL),9,412,NULL,2);
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `putToHistory` AFTER UPDATE ON `reservation` FOR EACH ROW BEGIN
+set @y = (SELECT getTime(new.reservationID) FROM reservation where reservationid=new.reservationID);
+if(@y< curtime()) Then
+INSERT INTO history
+Values (new.reservationID, new.scheduleID, new.seatID, new.Email, new.guestID, @y);
+end if;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `review`
@@ -302,7 +325,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES (1,1,1,'13:00:00','2022-12-06'),(2,1,2,'16:00:00','2022-12-06'),(3,11,3,'19:00:00','2022-12-09'),(4,2,3,'16:00:00','2022-12-06'),(5,3,1,'13:00:00','2022-12-06'),(6,3,3,'16:00:00','2022-12-06'),(7,4,2,'13:00:00','2022-12-06'),(8,4,3,'16:00:00','2022-12-06'),(9,5,1,'13:00:00','2022-12-06'),(10,5,2,'16:00:00','2022-12-06'),(11,6,1,'13:00:00','2022-12-06'),(12,6,3,'16:00:00','2022-12-06'),(13,7,2,'13:00:00','2022-12-06'),(14,7,3,'16:00:00','2022-12-06'),(15,8,1,'13:00:00','2022-12-06'),(16,8,2,'16:00:00','2022-12-06'),(17,8,3,'19:00:00','2022-12-06'),(18,9,3,'13:00:00','2022-12-06'),(19,10,1,'13:00:00','2022-12-06'),(20,10,2,'16:00:00','2022-12-06'),(21,11,2,'13:00:00','2022-12-06'),(22,11,3,'16:00:00','2022-12-06'),(201,2,3,'13:00:00','2022-12-08'),(300,1,2,'16:00:00','2022-12-22');
+INSERT INTO `schedule` VALUES (1,1,1,'13:00:00','2022-12-06'),(2,1,2,'16:00:00','2022-12-06'),(3,2,2,'13:00:00','2022-12-06'),(4,2,3,'16:00:00','2022-12-06'),(5,3,1,'13:00:00','2022-12-06'),(6,3,3,'16:00:00','2022-12-06'),(7,4,2,'13:00:00','2022-12-06'),(8,4,3,'16:00:00','2022-12-06'),(9,5,1,'13:00:00','2022-12-06'),(10,5,2,'16:00:00','2022-12-06'),(11,6,1,'13:00:00','2022-12-06'),(12,6,3,'16:00:00','2022-12-06'),(13,7,2,'13:00:00','2022-12-06'),(14,7,3,'16:00:00','2022-12-06'),(15,8,1,'13:00:00','2022-12-06'),(16,8,2,'16:00:00','2022-12-06'),(17,8,3,'19:00:00','2022-12-06'),(18,9,3,'13:00:00','2022-12-06'),(19,10,1,'13:00:00','2022-12-06'),(20,10,2,'16:00:00','2022-12-06'),(21,11,2,'13:00:00','2022-12-06'),(22,11,3,'16:00:00','2022-12-06');
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,9 +378,106 @@ CREATE TABLE `typedetails` (
 
 LOCK TABLES `typedetails` WRITE;
 /*!40000 ALTER TABLE `typedetails` DISABLE KEYS */;
-INSERT INTO `typedetails` VALUES (1,'Silver',800),(2,'Gold',1000),(3,'Luxury',1200),(4,'Arena',1500),(5,'Garden',600),(6,'War Zone',200);
+INSERT INTO `typedetails` VALUES (1,'Silver',800),(2,'Gold',1000),(3,'Luxury',1200);
 /*!40000 ALTER TABLE `typedetails` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'veryfast_tms'
+--
+
+--
+-- Dumping routines for database 'veryfast_tms'
+--
+/*!50003 DROP FUNCTION IF EXISTS `getTime` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `getTime`(resID varchar(20)) RETURNS datetime
+    DETERMINISTIC
+begin
+set @y = (Select cast(concat(sc.Date, ' ', sc.Time) as datetime) from reservation r, schedule sc where r.scheduleID=sc.ScheduleID and r.reservationID=resID);
+return @y;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `hello` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `hello`(s CHAR(20)) RETURNS char(50) CHARSET utf8mb4
+    DETERMINISTIC
+RETURN CONCAT('Hello, ',s,'!') ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `dorepeat` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `dorepeat`(p1 INT)
+BEGIN
+SET @x = 0;
+REPEAT SET @x = @x + 1; UNTIL @x > p1 END REPEAT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `fillSeats` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fillSeats`(cinID int, seats int)
+BEGIN
+SET @y = (cinID-1)*100;
+REPEAT 
+INSERT INTO `veryfast_tms`.`seat` (`SeatID`, `Row`, `Column`, `CinemaID`) VALUES (@y, MOD(@y,10), 'A', cinID);
+SET @y = @y + 1; UNTIL @y > (cinID-1)*100+seats-1 END REPEAT;
+SET @y = (cinID-1)*100;
+REPEAT 
+UPDATE `veryfast_tms`.`seat` SET `Column` = 'B' WHERE (`SeatID` REGEXP '1.$');
+UPDATE `veryfast_tms`.`seat` SET `Column` = 'C' WHERE (`SeatID` REGEXP '2.$');
+UPDATE `veryfast_tms`.`seat` SET `Column` = 'D' WHERE (`SeatID` REGEXP '3.$');
+UPDATE `veryfast_tms`.`seat` SET `Column` = 'E' WHERE (`SeatID` REGEXP '4.$');
+UPDATE `veryfast_tms`.`seat` SET `Column` = 'F' WHERE (`SeatID` REGEXP '5.$');
+SET @y = @y + 1; UNTIL @y > (cinID-1)*100+seats-1 END REPEAT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Final view structure for view `manager_details_view`
@@ -386,4 +506,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-08  0:41:00
+-- Dump completed on 2022-12-07  5:21:47
